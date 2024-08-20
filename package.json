@@ -1,0 +1,43 @@
+{
+  "name": "3o-modulo",
+  "version": "1.0.0",
+  "description": "GymPass style app.",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "tsx watch src/server.ts && npm run serve",
+    "serve": "start http://localhost:3333/documentation",
+    "start": "node build/server.js",
+    "build": "tsup src --out-dir build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rocketseat/eslint-config": "2.2.2",
+    "@types/bcryptjs": "2.4.6",
+    "@types/node": "20.14.9",
+    "@vitest/coverage-v8": "2.0.4",
+    "@vitest/ui": "2.0.4",
+    "eslint": "8.57.0",
+    "prisma": "5.16.1",
+    "tsup": "8.1.0",
+    "tsx": "4.16.0",
+    "typescript": "5.5.2",
+    "vite-tsconfig-paths": "4.3.2",
+    "vitest": "2.0.4"
+  },
+  "dependencies": {
+    "@fastify/swagger": "8.15.0",
+    "@fastify/swagger-ui": "4.0.1",
+    "@prisma/client": "5.16.1",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.4.5",
+    "fastify": "4.28.1",
+    "fastify-zod": "1.4.0",
+    "zod": "3.23.8"
+  }
+}

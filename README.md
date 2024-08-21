@@ -77,12 +77,14 @@ Em seguida, entre na raiz do projeto e insira os comandos:
   npm install
   npx prisma migrate dev
   docker compose up
-  npm run start dev
+  npm run dev
 ```
 
 A aplicação vai rodar no endereço http://localhost:3333
 
 Para facilitar o teste, o arquivo .env está no repositório, não sendo necessário alterar o mesmo.
+
+Obs: Versão do Node em que aplicação foi desenvolvida: 20.16.0
 
 Caso o front-end ainda não esteja rodando, entre no repositório e siga as instruções para subir o ambiente (INSERIR URL AQUI)
 

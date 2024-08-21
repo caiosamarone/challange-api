@@ -7,6 +7,8 @@ import { authSchemas } from './services/users/authenticate-schema'
 import { buildSwaggerOpenApi } from './config/swagger'
 import { registerSchemas } from './services/users/register-schema'
 import routesMapper from './utils/routes-mapper'
+import { searchGymSchemas } from './services/gyms/search-gym-schema'
+import { createGymSchemas } from './services/gyms/create-gym-schema'
 
 export default async function (app: FastifyInstance) {
   app.setErrorHandler((error, _, reply) => {
@@ -20,6 +22,8 @@ export default async function (app: FastifyInstance) {
 
   authSchemas.forEach((schema) => app.addSchema(schema))
   registerSchemas.forEach((schema) => app.addSchema(schema))
+  searchGymSchemas.forEach((schema) => app.addSchema(schema))
+  createGymSchemas.forEach((schema) => app.addSchema(schema))
 
   app.register(buildSwaggerOpenApi)
 

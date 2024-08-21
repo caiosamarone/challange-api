@@ -14,17 +14,13 @@ interface CreateGymServiceResponse {
 export class CreateGymService {
   constructor(private gymsRepository: GymsRepository) {}
 
-  async execute({
-    title,
-    description,
-    phone,
-  }: CreateGymServiceRequest): Promise<CreateGymServiceResponse> {
+  async execute({ title, description, phone }: CreateGymServiceRequest): Promise<CreateGymServiceResponse> {
     const gym = await this.gymsRepository.create({
       title,
       description,
       phone,
-      latitude: '',
-      longitude: '',
+      latitude: 0,
+      longitude: 0,
     })
 
     return {

@@ -7,6 +7,6 @@ export async function search(request: FastifyRequest, reply: FastifyReply) {
   const { gyms } = await searchGymsService.execute()
 
   return reply.status(200).send({
-    gyms,
+    data: gyms,
   })
 }

@@ -10,7 +10,7 @@ const gymSchema = z.object({
   longitude: z.number().optional(),
 })
 const searchResponseSchema = z.object({
-  data: z.array(gymSchema),
+  data: z.array(gymSchema).optional(),
 })
 
 export const { schemas: searchGymSchemas, $ref } = buildJsonSchemas(

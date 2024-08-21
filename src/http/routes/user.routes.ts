@@ -28,7 +28,7 @@ export async function userRoute(app: FastifyInstance) {
     register,
   )
   app.post(
-    '/login',
+    '/users/login',
     {
       schema: {
         tags: ['Users'],

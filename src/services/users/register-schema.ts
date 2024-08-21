@@ -17,6 +17,6 @@ export const { schemas: registerSchemas, $ref } = buildJsonSchemas(
     registerResponseSchema,
   },
   {
-    $id: 'authSchema',
+    $id: 'registerSchema',
   },
 )

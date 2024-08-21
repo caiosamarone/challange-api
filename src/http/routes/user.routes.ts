@@ -1,13 +1,16 @@
+import { FastifyInstance } from 'fastify'
+
 import { $ref as authRef } from '@/services/users/authenticate-schema'
 import { $ref as registerRef } from '@/services/users/register-schema'
 import { $ref as searchUsersRef } from '@/services/users/search-users-schema'
-import { FastifyInstance } from 'fastify'
+import { $ref as updateUserRef } from '@/services/users/update-user-schema'
 
 import { register } from '../controllers/users/register.controller'
 import { validateApiKey } from '../middlewares/validate-apikey'
 import { authenticate } from '../controllers/users/authenticate.controller'
 import { searchAll } from '../controllers/users/search-all.controller'
 import { deleteUser } from '../controllers/users/delete.controller'
+import { update } from '../controllers/users/update.controller'
 
 export async function userRoute(app: FastifyInstance) {
   app.post(
@@ -46,7 +49,26 @@ export async function userRoute(app: FastifyInstance) {
       preHandler: [validateApiKey],
     },
     searchAll,
-  )
+  ),
+    app.put(
+      '/users/:userId',
+      {
+        schema: {
+          tags: ['Users'],
+          body: updateUserRef('updateRequestSchema'),
+          response: {
+            200: updateUserRef('updateResponseSchema'),
+          },
+          security: [
+            {
+              apiKey: [],
+            },
+          ],
+        },
+        preHandler: [validateApiKey],
+      },
+      update,
+    )
   app.delete(
     '/users/:userId',
     {

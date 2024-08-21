@@ -3,6 +3,15 @@ import { UsersRepository } from '../users-repository'
 import { randomUUID } from 'crypto'
 
 export class InMemoryUsersRepository implements UsersRepository {
+  update(data: Prisma.UserUpdateInput): Promise<User> {
+    throw new Error('Method not implemented.')
+  }
+  delete(userId: string): Promise<boolean> {
+    throw new Error('Method not implemented.')
+  }
+  getAll(): Promise<User[] | []> {
+    throw new Error('Method not implemented.')
+  }
   public items: User[] = []
 
   async findByEmail(email: string) {

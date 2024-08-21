@@ -13,7 +13,7 @@ async function run() {
         host: '0.0.0.0',
       })
       .then(() => {
-        console.log('Server running')
+        console.log(`Server running at http://localhost:${env.PORT}`)
       })
   } catch (err) {
     app.log.error(err)

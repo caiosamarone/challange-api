@@ -2,10 +2,23 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 
 import { InvalidCredentialsError } from '@/services/errors/invalid-credentials-error'
 import { makeAuthenticateService } from '@/services/factories/make-authenticate-service'
-import { AuthInput } from '@/services/users/authenticate-schema'
+import { checkPermission } from '@/utils/check-permission'
+import { z } from 'zod'
 
-export async function authenticate(request: FastifyRequest<{ Body: AuthInput }>, reply: FastifyReply) {
-  const { email, password } = request.body
+export async function authenticate(request: FastifyRequest, reply: FastifyReply) {
+  const requestBodySchema = z.object({
+    email: z.string().email(),
+    password: z.string(),
+  })
+
+  const { email, password } = requestBodySchema.parse(request.body)
+
+  const permission = checkPermission(email, password)
+  if (permission === 'ADMIN') {
+    return reply.status(200).send({
+      permission: 'ADMIN',
+    })
+  }
 
   try {
     const authenticateService = makeAuthenticateService()
@@ -18,7 +31,7 @@ export async function authenticate(request: FastifyRequest<{ Body: AuthInput }>,
     return reply.status(200).send({
       name,
       userId: id,
-      permission: 'ADMIN',
+      permission: 'USER',
     })
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {

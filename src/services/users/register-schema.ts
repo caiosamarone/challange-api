@@ -3,8 +3,8 @@ import { z } from 'zod'
 
 const registerRequestSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string(),
+  password: z.string(),
 })
 const registerResponseSchema = z.object({
   message: z.string(),

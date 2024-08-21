@@ -12,6 +12,7 @@ let sut: AuthenticateService
 describe('authenticate service', () => {
   beforeEach(() => {
     usersRepository = new InMemoryUsersRepository()
+    //@ts-ignore
     sut = new AuthenticateService(usersRepository)
   })
   it('should authenticate user', async () => {

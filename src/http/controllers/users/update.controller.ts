@@ -1,4 +1,5 @@
 import { ResourceNotFoundError } from '@/services/errors/resource-not-found'
+import { UserNotFoundError } from '@/services/errors/user-not-found'
 
 import { makeUpdateService } from '@/services/factories/make-update-user-service'
 
@@ -40,8 +41,8 @@ export async function update(request: FastifyRequest, reply: FastifyReply) {
       },
     })
   } catch (err) {
-    if (err instanceof ResourceNotFoundError) {
-      reply.status(400).send({ message: err.message })
+    if (err instanceof UserNotFoundError) {
+      reply.status(404).send({ message: err.message })
     }
     throw err
   }

@@ -14,7 +14,7 @@ export default async function (app: FastifyInstance) {
     }
     console.error(error)
 
-    return reply.status(500).send({ message: 'Internal server error' })
+    return reply.status(500).send({ message: error.message })
   })
 
   app.register(buildSchemas)

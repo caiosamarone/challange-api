@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 const updateRequestSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
+  email: z.string(),
 })
 const updateResponseSchema = z.object({
   data: z.object({

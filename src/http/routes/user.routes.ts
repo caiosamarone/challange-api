@@ -7,6 +7,7 @@ import { register } from '../controllers/users/register.controller'
 import { validateApiKey } from '../middlewares/validate-apikey'
 import { authenticate } from '../controllers/users/authenticate.controller'
 import { searchAll } from '../controllers/users/search-all.controller'
+import { deleteUser } from '../controllers/users/delete.controller'
 
 export async function userRoute(app: FastifyInstance) {
   app.post(
@@ -45,6 +46,24 @@ export async function userRoute(app: FastifyInstance) {
       preHandler: [validateApiKey],
     },
     searchAll,
+  )
+  app.delete(
+    '/users/:userId',
+    {
+      schema: {
+        tags: ['Users'],
+        response: {
+          204: {},
+        },
+        security: [
+          {
+            apiKey: [],
+          },
+        ],
+      },
+      preHandler: [validateApiKey],
+    },
+    deleteUser,
   )
   app.post(
     '/login',

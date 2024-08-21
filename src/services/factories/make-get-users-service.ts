@@ -3,7 +3,7 @@ import { SearchAllService } from '../users/searchAll'
 
 export function makeSearchAllService() {
   const usersRepository = new PrismaUsersRepository()
-  const registerService = new SearchAllService(usersRepository)
+  const service = new SearchAllService(usersRepository)
 
-  return registerService
+  return service
 }

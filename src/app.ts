@@ -6,6 +6,7 @@ import { buildSwaggerOpenApi } from './config/swagger'
 import routesMapper from './utils/routes-mapper'
 
 import { buildSchemas } from './config/schemas'
+import fastifyCors from '@fastify/cors'
 
 export default async function (app: FastifyInstance) {
   app.setErrorHandler((error, _, reply) => {
@@ -15,6 +16,12 @@ export default async function (app: FastifyInstance) {
     console.error(error)
 
     return reply.status(500).send({ message: error.message })
+  })
+
+  app.register(fastifyCors, {
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: '*',
   })
 
   app.register(buildSchemas)

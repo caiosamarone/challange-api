@@ -1,33 +1,27 @@
 import { FastifyReply, FastifyRequest } from 'fastify'
+
+import { makeCheckInService } from '@/services/factories/make-check-in-service'
+import { CheckInInput } from '@/services/check-ins/check-in-schema'
 import { z } from 'zod'
 
-import { InvalidCredentialsError } from '@/services/errors/invalid-credentials-error'
-import { makeAuthenticateService } from '@/services/factories/make-authenticate-service'
-import { AuthInput } from '@/services/users/authenticate-schema'
+export async function makeCheckIn(request: FastifyRequest<{ Body: CheckInInput }>, reply: FastifyReply) {
+  const createCheckInParamsSchema = z.object({
+    gymId: z.string().uuid(),
+  })
+  const { userId } = request.body
 
-export async function makeCheckIn(
-  request: FastifyRequest<{ Body: AuthInput }>,
-  reply: FastifyReply,
-) {
-  const { email, password } = request.body
+  const { gymId } = createCheckInParamsSchema.parse(request.params)
 
   try {
-    const authenticateService = makeAuthenticateService()
-    const {
-      user: { name, id },
-    } = await authenticateService.execute({
-      email,
-      password,
-    })
-    return reply.status(200).send({
-      name,
-      userId: id,
-      permission: 'ADMIN',
+    const checkInService = makeCheckInService()
+    await checkInService.execute({
+      gymId,
+      userId,
     })
   } catch (err) {
-    if (err instanceof InvalidCredentialsError) {
-      reply.status(401).send({ message: err.message })
-    }
     throw err
   }
+  return reply.status(201).send({
+    message: 'Check-In realizado com sucesso!',
+  })
 }

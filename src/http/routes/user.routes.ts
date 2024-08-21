@@ -1,11 +1,12 @@
 import { $ref as authRef } from '@/services/users/authenticate-schema'
-
+import { $ref as registerRef } from '@/services/users/register-schema'
+import { $ref as searchUsersRef } from '@/services/users/search-users-schema'
 import { FastifyInstance } from 'fastify'
 
-import { $ref as registerRef } from '@/services/users/register-schema'
 import { register } from '../controllers/users/register.controller'
 import { validateApiKey } from '../middlewares/validate-apikey'
 import { authenticate } from '../controllers/users/authenticate.controller'
+import { searchAll } from '../controllers/users/search-all.controller'
 
 export async function userRoute(app: FastifyInstance) {
   app.post(
@@ -27,8 +28,26 @@ export async function userRoute(app: FastifyInstance) {
     },
     register,
   )
+  app.get(
+    '/users',
+    {
+      schema: {
+        tags: ['Users'],
+        response: {
+          200: searchUsersRef('searchResponseSchema'),
+        },
+        security: [
+          {
+            apiKey: [],
+          },
+        ],
+      },
+      preHandler: [validateApiKey],
+    },
+    searchAll,
+  )
   app.post(
-    '/users/login',
+    '/login',
     {
       schema: {
         tags: ['Users'],

@@ -11,13 +11,17 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 
   const { title, description, phone } = createGymBodySchema.parse(request.body)
 
-  const createGymService = makeCreateGymService()
+  try {
+    const createGymService = makeCreateGymService()
 
-  await createGymService.execute({
-    title,
-    description,
-    phone,
-  })
+    await createGymService.execute({
+      title,
+      description,
+      phone,
+    })
+  } catch (er) {
+    throw er
+  }
 
   return reply.status(201).send()
 }

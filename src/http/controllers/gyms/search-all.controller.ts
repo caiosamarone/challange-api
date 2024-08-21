@@ -2,11 +2,14 @@ import { makeSearchGymsService } from '@/services/factories/make-get-gyms-servic
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
-  const searchGymsService = makeSearchGymsService()
+  try {
+    const searchGymsService = makeSearchGymsService()
 
-  const { gyms } = await searchGymsService.execute()
-
-  return reply.status(200).send({
-    data: gyms,
-  })
+    const { gyms } = await searchGymsService.execute()
+    return reply.status(200).send({
+      data: gyms,
+    })
+  } catch (er) {
+    throw er
+  }
 }

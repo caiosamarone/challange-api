@@ -102,3 +102,11 @@ A API_KEY ja está configurada, basta realizar as chamadas.
 
 Para instruções de regras de interface acesse o repositório frontend:
 [INSERIR URL AQUI DO FRONT]
+
+## Melhorias
+
+- Testes Unitários (A implentação de testes unitários está desenvolvida apenas para o serviço de autenticação de usuário, por questões de timing)
+
+- Testes de Integração
+
+- Implementação de JWT para login de usuários

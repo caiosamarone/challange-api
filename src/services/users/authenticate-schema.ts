@@ -6,10 +6,15 @@ const authRequestSchema = z.object({
   password: z.string(),
 })
 const authResponseSchema = z.object({
-  authToken: z.string(),
+  name: z.string(),
+  permission: z.enum(['ADMIN', 'USER']),
+  userId: z.string()
 })
 export type AuthInput = z.infer<typeof authRequestSchema>
 
 export const { schemas: authSchemas, $ref } = buildJsonSchemas({
   authRequestSchema,
+  authResponseSchema
+}, {
+  $id: "authUserSchema"
 })

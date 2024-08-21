@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 import { InvalidCredentialsError } from '@/services/errors/invalid-credentials-error'
 import { makeAuthenticateService } from '@/services/factories/make-authenticate-service'
-import { AuthInput } from '@/services/authenticate-schema'
+import { AuthInput } from '@/services/users/authenticate-schema'
 
 export async function authenticate(
   request: FastifyRequest<{ Body: AuthInput }>,
@@ -13,9 +13,14 @@ export async function authenticate(
 
   try {
     const authenticateService = makeAuthenticateService()
-    await authenticateService.execute({
+   const {user: { name, id}} =  await authenticateService.execute({
       email,
       password,
+    })
+    return reply.status(200).send({
+      name,
+      userId: id,
+      permission: 'ADMIN'
     })
   } catch (err) {
     if (err instanceof InvalidCredentialsError) {
@@ -23,8 +28,6 @@ export async function authenticate(
     }
     throw err
   }
-  console.log('ola')
-  return reply.status(200).send({
-    authToken: 'ey82378237',
-  })
+
+  
 }

@@ -3,7 +3,7 @@ import { RegisterService } from './register'
 import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
 import { compare, hash } from 'bcryptjs'
 import { InMemoryUsersRepository } from '@/repositories/in-memory/in-memory-users-repository'
-import { UserAlreadyExistsError } from './errors/user-already-exists-error'
+import { UserAlreadyExistsError } from '../errors/user-already-exists-error'
 
 let usersRepository: InMemoryUsersRepository
 let sut: RegisterService

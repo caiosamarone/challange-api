@@ -14,13 +14,28 @@ export class PrismaGymsRepository implements GymsRepository {
   }
 
   async searchMany() {
-    const gyms = await prisma.gym.findMany()
+    const gyms = await prisma.gym.findMany({
+      orderBy: {
+        title: 'asc',
+      },
+    })
 
     return gyms
   }
 
   async create(data: Prisma.GymCreateInput) {
     const gym = await prisma.gym.create({
+      data,
+    })
+
+    return gym
+  }
+
+  async update(data: Prisma.GymUpdateInput) {
+    const gym = await prisma.gym.update({
+      where: {
+        id: String(data.id),
+      },
       data,
     })
 

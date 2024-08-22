@@ -1,7 +1,7 @@
 import { buildJsonSchemas } from 'fastify-zod'
 import { z } from 'zod'
 
-const gymSchema = z.object({
+export const gymSchema = z.object({
   id: z.string(),
   title: z.string(),
   description: z.string().optional(),

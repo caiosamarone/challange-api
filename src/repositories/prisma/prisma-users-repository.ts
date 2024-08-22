@@ -21,7 +21,11 @@ export class PrismaUsersRepository implements UsersRepository {
     return !!user.id
   }
   async getAll() {
-    const users = await prisma.user.findMany()
+    const users = await prisma.user.findMany({
+      orderBy: {
+        created_at: 'desc',
+      },
+    })
     return users
   }
   async create({ email, name, passoword_hash }: Prisma.UserCreateInput) {

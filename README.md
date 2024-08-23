@@ -80,6 +80,8 @@ Em seguida, entre na raiz do projeto e insira os comandos:
   npm run start dev
 ```
 
+A migration irá inserir dados automaticamente na tabela de academias e usuários.
+
 A aplicação vai rodar no endereço http://localhost:3333
 
 Para facilitar o teste, o arquivo .env está no repositório, não sendo necessário alterar o mesmo.

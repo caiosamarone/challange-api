@@ -17,6 +17,8 @@ export async function authenticate(request: FastifyRequest, reply: FastifyReply)
   if (permission === 'ADMIN') {
     return reply.status(200).send({
       permission: 'ADMIN',
+      name: 'ADMIN',
+      userId: 'ADMIN',
     })
   }
 

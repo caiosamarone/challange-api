@@ -9,6 +9,7 @@ import { registerSchemas } from '@/services/users/register-schema'
 import { searchUsersSchemas } from '@/services/users/search-users-schema'
 import { updateSchemas } from '@/services/users/update-user-schema'
 import { updateGymSchemas } from '@/services/gyms/update-gym-schema'
+import { searchCheckInSchemas } from '@/services/check-ins/search-check-in-schema'
 
 export async function buildSchemas(app: FastifyInstance) {
   authSchemas.forEach((schema) => app.addSchema(schema))
@@ -19,6 +20,7 @@ export async function buildSchemas(app: FastifyInstance) {
   checkInSchemas.forEach((schema) => app.addSchema(schema))
   searchUsersSchemas.forEach((schema) => app.addSchema(schema))
   updateSchemas.forEach((schema) => app.addSchema(schema))
+  searchCheckInSchemas.forEach((schema) => app.addSchema(schema))
 }
 
 export default fastifyPlugin(buildSchemas)

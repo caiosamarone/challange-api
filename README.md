@@ -75,18 +75,16 @@ Em seguida, entre na raiz do projeto e insira os comandos:
 
 ```bash
   npm install
-  docker compose up
   npx prisma migrate dev
-  npm run dev
+  docker compose up
+  npm run start dev
 ```
 
 A aplicação vai rodar no endereço http://localhost:3333
 
 Para facilitar o teste, o arquivo .env está no repositório, não sendo necessário alterar o mesmo.
 
-Obs: Versão do Node em que aplicação foi desenvolvida: 20.16.0
-
-Caso o front-end ainda não esteja rodando, entre no repositório e siga as instruções para subir o ambiente (INSERIR URL AQUI)
+Caso o front-end ainda não esteja rodando, entre no repositório e siga as instruções para subir o ambiente https://github.com/caiosamarone/challange-web
 
 ### Teste da API
 
@@ -103,7 +101,7 @@ A API_KEY ja está configurada, basta realizar as chamadas.
 ### Utilizando A aplicação web
 
 Para instruções de regras de interface acesse o repositório frontend:
-[INSERIR URL AQUI DO FRONT]
+https://github.com/caiosamarone/challange-web
 
 ## Melhorias
 

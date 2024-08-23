@@ -19,7 +19,6 @@ O USER é um usuário comum da aplicação, ele deve:
 - Se registrar
 - Realizar login
 - Selecionar uma academia para fazer o check-in
-- Alterar seu nome ou email
 
 O ADMIN deve:
 

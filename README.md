@@ -75,8 +75,8 @@ Em seguida, entre na raiz do projeto e insira os comandos:
 
 ```bash
   npm install
-  npx prisma migrate dev
   docker compose up
+  npx prisma migrate dev
   npm run start dev
 ```
 

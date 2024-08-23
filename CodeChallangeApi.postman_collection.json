@@ -22,7 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Nome\",\r\n    \"email\": \"email@email.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"raw": "{\r\n    \"name\": \"John Doe\",\r\n    \"email\": \"johnDoe@email.com\",\r\n    \"password\":\"123456\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,7 +81,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Melo\",\r\n    \"email\": \"caio.mendes@brf.com\"\r\n}",
+							"raw": "{\r\n    \"name\": \"\",\r\n    \"email\": \"\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:3333/users/98e5aee1-5acb-49f9s-8506-157df64c46c8",
+							"raw": "http://localhost:3333/users/c56845c5-2cc3-4e57-8179-91edaf7d0695",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -97,7 +97,7 @@
 							"port": "3333",
 							"path": [
 								"users",
-								"98e5aee1-5acb-49f9s-8506-157df64c46c8"
+								"c56845c5-2cc3-4e57-8179-91edaf7d0695"
 							]
 						}
 					},
@@ -115,7 +115,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://localhost:3333/users/82c1d256-0b23-4d99-97bc-400d60e3a3c7",
+							"raw": "http://localhost:3333/users/0c6c245b-0661-4694-8117-a66e9ce50432",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -123,7 +123,7 @@
 							"port": "3333",
 							"path": [
 								"users",
-								"82c1d256-0b23-4d99-97bc-400d60e3a3c7"
+								"0c6c245b-0661-4694-8117-a66e9ce50432"
 							]
 						}
 					},
@@ -142,7 +142,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"email\": \"caio.mendes@email.com\",\r\n    \"password\":\"123456\"\r\n}",
+							"raw": "{\r\n    \"email\": \"admin@admin.com\",\r\n    \"password\":\"admin\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -163,7 +163,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Usuarios"
 		},
 		{
 			"name": "check-ins",
@@ -203,8 +204,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3333/check-in/user/1c4d0200-b046-4fe6-b585-20ec448c130a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"check-in",
+								"user",
+								"1c4d0200-b046-4fe6-b585-20ec448c130a"
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"description": "Check-ins"
 		},
 		{
 			"name": "gyms",
@@ -245,9 +274,6 @@
 				},
 				{
 					"name": "GetAll",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
 						"method": "GET",
 						"header": [
@@ -257,15 +283,6 @@
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Nome\",\r\n    \"email\": \"email@email.com\",\r\n    \"password\":\"123456\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://localhost:3333/gym",
 							"protocol": "http",
@@ -279,8 +296,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "apiKey",
+								"value": "{{API_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"string\",\r\n  \"description\": \"string\",\r\n  \"phone\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3333/gym/43324796-9298-4a71-86bd-0e13b87e850a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"gym",
+								"43324796-9298-4a71-86bd-0e13b87e850a"
+							]
+						}
+					},
+					"response": []
 				}
-			]
+			],
+			"description": "Academias"
 		}
 	],
 	"variable": [
